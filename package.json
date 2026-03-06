@@ -1,15 +1,32 @@
 {
   "name": "laravel-ia-doc",
-  "displayName": "laravel-ia-doc",
-  "description": "ia docuemntacion para proyectos",
+  "displayName": "Laravel AI Doc",
+  "description": "Analiza y documenta cambios de tu proyecto Laravel usando IA",
   "version": "0.0.1",
+  "publisher": "Kevin-dev",
+  "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kevinBayona/laravel-ia-doc-plugin"
+  },
   "engines": {
-    "vscode": "^1.109.0"
+    "vscode": "^1.85.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Programming Languages",
+    "Snippets"
   ],
-  "activationEvents": [],
+  "keywords": [
+    "laravel",
+    "ai",
+    "documentation",
+    "git",
+    "php"
+  ],
+  "activationEvents": [
+    "onCommand:laravel-ai-doc.analizarProyecto"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
@@ -17,7 +34,16 @@
         "command": "laravel-ai-doc.analizarProyecto",
         "title": "Laravel AI: Analizar cambios"
       }
-    ]
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "laravel-ai-doc.analizarProyecto",
+          "title": "Laravel AI: Analizar cambios",
+          "group": "navigation"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
@@ -36,7 +62,7 @@
   "devDependencies": {
     "@types/mocha": "^10.0.10",
     "@types/node": "22.x",
-    "@types/vscode": "^1.109.0",
+    "@types/vscode": "^1.85.0",
     "@vscode/test-cli": "^0.0.12",
     "@vscode/test-electron": "^2.5.2",
     "esbuild": "^0.27.3",
@@ -47,7 +73,6 @@
   },
   "dependencies": {
     "axios": "^1.13.6",
-    "child_process": "^1.0.2",
     "openai": "^6.27.0"
   }
 }

@@ -1,71 +1,42 @@
-# laravel-ia-doc README
+# Laravel AI Doc
 
-This is the README for your extension "laravel-ia-doc". After writing up a brief description, we recommend including the following sections.
+Analiza automáticamente los cambios de tu proyecto Laravel usando IA y genera documentación clara de qué cambió, qué métodos se modificaron y qué efecto tienen los cambios.
 
-## Features
+## ¿Cómo funciona?
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+1. Abre tu proyecto Laravel en VS Code
+2. Abre el Command Palette (`Ctrl+Shift+P`)
+3. Ejecuta **"Laravel AI: Analizar cambios del proyecto"**
+4. La extensión detecta todos los archivos modificados via `git status`
+5. Envía el diff exacto + contenido de cada archivo a la IA
+6. Abre un documento Markdown con la explicación detallada
 
-For example if there is an image subfolder under your extension project workspace:
+## Características
 
-\!\[feature X\]\(images/feature-x.png\)
+- Detecta archivos **modificados**, **en staging** y **nuevos sin trackear**
+- Muestra el diff exacto (qué líneas cambiaron) con contexto completo
+- Explica el impacto real de cada cambio en el sistema
+- Soporta proyectos Laravel con Services, Controllers, Models, etc.
+- API Key guardada de forma segura con `vscode.SecretStorage`
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Requisitos
 
-## Requirements
+- Git instalado y proyecto bajo control de versiones
+- API Key de OpenAI ([obtener aquí](https://platform.openai.com/api-keys))
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Configuración
 
-## Extension Settings
+Al ejecutar el comando por primera vez, se te pedirá tu OpenAI API Key. Se guarda de forma segura y no se vuelve a pedir.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## Ejemplo de salida
 
-For example:
+```markdown
+### [MODIFICADO] app/Services/MoodleServices/InscripcionMoodleService.php
+Se cambió el campo de búsqueda de `username` a `email` en la función `getUserIdByEmail`,
+lo que significa que Moodle ahora busca usuarios por correo electrónico en lugar de
+nombre de usuario. Esto corrige la integración con la API de Moodle.
+```
 
-This extension contributes the following settings:
+## Licencia
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+MIT
